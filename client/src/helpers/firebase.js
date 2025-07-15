@@ -2,17 +2,16 @@ import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { initializeApp } from "firebase/app";
 import { getEvn } from "./getEnv";
 
-// Firebase configuration using ByteBlog project
 const firebaseConfig = {
-  apiKey: getEvn('VITE_FIREBASE_API'),
-  authDomain: "byteblog-56ba4.firebaseapp.com",
-  projectId: "byteblog-56ba4",
-  storageBucket: "byteblog-56ba4.appspot.com",  // ✅ fixed this
-  messagingSenderId: "290093671866",
-  appId: "1:290093671866:web:8c052bb28851b786b5a983"
+  apiKey: getEvn('VITE_FIREBASE_API_KEY'),
+  authDomain: getEvn('VITE_FIREBASE_AUTH_DOMAIN'),
+  projectId: getEvn('VITE_FIREBASE_PROJECT_ID'),
+  storageBucket: getEvn('VITE_FIREBASE_STORAGE_BUCKET'),
+  messagingSenderId: getEvn('VITE_FIREBASE_MESSAGING_SENDER_ID'),
+  appId: getEvn('VITE_FIREBASE_APP_ID'),
+  measurementId: getEvn('VITE_FIREBASE_MEASUREMENT_ID'),
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 const auth = getAuth(app);
